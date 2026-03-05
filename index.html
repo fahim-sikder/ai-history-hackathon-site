@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in History and Literature Hackathon | May 25, 2026 | Uppsala</title>
+  <meta name="description" content="Join us for the AI in History and Literature Hackathon on May 25, 2026 at Akademihotellet, Uppsala. No prior AI knowledge required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark: #1e293b;
+      --teal: #0d9488;
+      --teal-dark: #0b7e73;
+      --white: #ffffff;
+      --light-gray: #f1f5f9;
+      --text: #334155;
+      --text-light: #64748b;
+      --font-heading: 'DM Serif Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* Sticky Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+    }
+
+    .nav.scrolled {
+      background: var(--dark);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+      padding: 0.75rem 2rem;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      color: var(--white);
+      font-size: 1.25rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--teal);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero-image.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.92) 0%, rgba(13, 148, 136, 0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-meta svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .countdown-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      min-width: 80px;
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown-number {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--teal);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+    }
+
+    .btn-outline:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .hero-disclaimer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      font-style: italic;
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    /* About */
+    .about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.75;
+    }
+
+    .about-sidebar {
+      background: var(--light-gray);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .about-sidebar h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .fact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .fact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fact-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .fact-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--dark);
+      margin-bottom: 0.15rem;
+    }
+
+    .fact-item span {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* What to Expect */
+    .expect {
+      background: var(--light-gray);
+    }
+
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .expect-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .expect-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .expect-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(13, 148, 136, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+
+    .expect-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .expect-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .expect-card p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Who Should Attend */
+    .audience {
+      background: var(--white);
+    }
+
+    .audience-intro {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .discipline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: var(--light-gray);
+      color: var(--dark);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .tag:hover {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* Organisers */
+    .organisers {
+      background: var(--light-gray);
+    }
+
+    .organisers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .organiser-card {
+      text-align: center;
+    }
+
+    .organiser-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--dark), var(--teal));
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--white);
+    }
+
+    .organiser-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .organiser-card p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Registration */
+    .registration {
+      background: var(--dark);
+      text-align: center;
+      color: var(--white);
+    }
+
+    .registration .section-label {
+      color: var(--teal);
+    }
+
+    .registration .section-title {
+      color: var(--white);
+    }
+
+    .registration-text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.05rem;
+      max-width: 550px;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+
+    .registration .countdown {
+      margin-bottom: 2rem;
+    }
+
+    .deadline-badge {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      background: rgba(13, 148, 136, 0.15);
+      border: 1px solid rgba(13, 148, 136, 0.3);
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0f172a;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer p {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    /* Fade-in animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .expect-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .organisers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--dark);
+        flex-direction: column;
+        padding: 1rem 2rem 2rem;
+        gap: 1rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .countdown-item {
+        min-width: 65px;
+        padding: 0.75rem 0.75rem;
+      }
+
+      .countdown-number {
+        font-size: 1.5rem;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .expect-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .organisers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">AI in History &amp; Literature</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#expect">What to Expect</a></li>
+      <li><a href="#audience">Who Should Attend</a></li>
+      <li><a href="#organisers">Organisers</a></li>
+      <li><a href="#register">Register</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Hackathon 2026</p>
+      <h1>AI in History and Literature</h1>
+      <div class="hero-meta">
+        <span>
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          May 25, 2026 &middot; 10:15 &ndash; 16:00
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Akademihotellet, Uppsala
+        </span>
+      </div>
+      <div class="countdown" id="heroCountdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="heroDays">--</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="heroHours">--</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="heroMinutes">--</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="heroSeconds">--</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      <a href="https://doit.medfarm.uu.se/bin/kurt3/kurt/8902071" class="btn" target="_blank" rel="noopener">Register Now</a>
+      <p class="hero-disclaimer">Background image generated using AI</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p class="section-label">About the Event</p>
+          <h2 class="section-title">Where Humanities Meet Artificial Intelligence</h2>
+          <p>
+            Are you a student or researcher in history, literature, or a related discipline? Are you curious about how AI can support your work but unsure where to start? Join us for a hands-on hackathon designed specifically for humanities students and scholars.
+          </p>
+          <p>
+            In this event, you will learn about synthetic data generation and participate in an experiment exploring how AI-generated historical and literary texts compare to authentic sources. No prior experience with AI or programming is needed -- just bring your scholarly expertise and curiosity.
+          </p>
+          <p>
+            The results will contribute to a research publication, offering you the chance to be part of a cutting-edge interdisciplinary study at the intersection of AI and the humanities.
+          </p>
+        </div>
+        <div class="about-sidebar fade-in">
+          <h3>Key Facts</h3>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <strong>Date</strong>
+              <span>May 25, 2026</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Time</strong>
+              <span>10:15 &ndash; 16:00</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Venue</strong>
+              <span>Akademihotellet, Uppsala</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <strong>For</strong>
+              <span>Students and Researchers</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div>
+              <strong>AI Experience</strong>
+              <span>No prior knowledge required</span>
+            </div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-icon">
+              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div>
+              <strong>Includes</strong>
+              <span>Lunch and fika</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="expect" id="expect">
+    <div class="container">
+      <p class="section-label fade-in">What to Expect</p>
+      <h2 class="section-title fade-in">A Day of Discovery and Collaboration</h2>
+      <div class="expect-grid">
+        <div class="expect-card fade-in">
+          <div class="expect-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>Learn About Synthetic Data</h3>
+          <p>Discover how AI generates synthetic historical and literary texts, and understand the implications for humanities research.</p>
+        </div>
+        <div class="expect-card fade-in">
+          <div class="expect-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Participate in an Experiment</h3>
+          <p>Put your scholarly expertise to the test by evaluating AI-generated texts alongside authentic historical and literary sources.</p>
+        </div>
+        <div class="expect-card fade-in">
+          <div class="expect-icon">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <h3>Publication Opportunity</h3>
+          <p>Contribute to a research publication that explores the intersection of artificial intelligence and humanities scholarship.</p>
+        </div>
+        <div class="expect-card fade-in">
+          <div class="expect-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Lunch &amp; Fika</h3>
+          <p>Enjoy a catered lunch and traditional Swedish fika while networking with fellow researchers from across disciplines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Should Attend -->
+  <section class="audience" id="audience">
+    <div class="container">
+      <p class="section-label fade-in">Who Should Attend</p>
+      <h2 class="section-title fade-in">Calling All Humanities Students and Researchers</h2>
+      <p class="audience-intro fade-in">
+        This hackathon is designed for students and researchers at all career stages -- from Bachelor's students to full professors -- working in the humanities and related disciplines. No prior AI or programming knowledge is required.
+      </p>
+      <div class="discipline-tags fade-in">
+        <span class="tag">History</span>
+        <span class="tag">Literature</span>
+        <span class="tag">Heritage Studies</span>
+        <span class="tag">Economic History</span>
+        <span class="tag">History of Science and Ideas</span>
+        <span class="tag">Digital Humanities</span>
+        <span class="tag">Cultural Studies</span>
+        <span class="tag">Archival Science</span>
+        <span class="tag">Bachelor's Students</span>
+        <span class="tag">Master's Students</span>
+        <span class="tag">PhD Students</span>
+        <span class="tag">Postdoctoral Researchers</span>
+        <span class="tag">Senior Lecturers</span>
+        <span class="tag">Professors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organisers -->
+  <section class="organisers" id="organisers">
+    <div class="container">
+      <p class="section-label fade-in">Organisers</p>
+      <h2 class="section-title fade-in">Meet the Team</h2>
+      <div class="organisers-grid">
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">A</div>
+          <h3>AAA</h3>
+          <p>Department of History</p>
+        </div>
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">B</div>
+          <h3>BBB</h3>
+          <p>Department of Literature</p>
+        </div>
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">C</div>
+          <h3>CCC</h3>
+          <p>Centre for Digital Humanities</p>
+        </div>
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">D</div>
+          <h3>DDD</h3>
+          <p>Department of Information Technology</p>
+        </div>
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">E</div>
+          <h3>EEE</h3>
+          <p>Department of Economic History</p>
+        </div>
+        <div class="organiser-card fade-in">
+          <div class="organiser-avatar">F</div>
+          <h3>FFF</h3>
+          <p>Department of History of Science</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section class="registration" id="register">
+    <div class="container">
+      <p class="section-label fade-in">Registration</p>
+      <h2 class="section-title fade-in">Secure Your Spot</h2>
+      <p class="registration-text fade-in">
+        Join us for a day of exploration at the intersection of AI and the humanities. Spaces are limited -- register today.
+      </p>
+      <div class="countdown fade-in" id="regCountdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="regDays">--</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="regHours">--</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="regMinutes">--</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="regSeconds">--</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="deadline-badge">Registration deadline: May 18, 2026</div>
+      </div>
+      <div class="fade-in">
+        <a href="https://doit.medfarm.uu.se/bin/kurt3/kurt/8902071" class="btn" target="_blank" rel="noopener">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>AI in History and Literature Hackathon &middot; May 25, 2026 &middot; Akademihotellet, Uppsala</p>
+    <p style="margin-top: 0.5rem;"><a href="#hero">Back to top</a></p>
+  </footer>
+
+  <script>
+    // Countdown Timer
+    // May 25, 2026 10:15 CEST (UTC+2)
+    const eventDate = new Date('2026-05-25T10:15:00+02:00').getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        const labels = ['Days', 'Hours', 'Minutes', 'Seconds'];
+        ['Days', 'Hours', 'Minutes', 'Seconds'].forEach(function(unit) {
+          var el1 = document.getElementById('hero' + unit);
+          var el2 = document.getElementById('reg' + unit);
+          if (el1) el1.textContent = '0';
+          if (el2) el2.textContent = '0';
+        });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('heroDays').textContent = days;
+      document.getElementById('heroHours').textContent = hours;
+      document.getElementById('heroMinutes').textContent = minutes;
+      document.getElementById('heroSeconds').textContent = seconds;
+
+      document.getElementById('regDays').textContent = days;
+      document.getElementById('regHours').textContent = hours;
+      document.getElementById('regMinutes').textContent = minutes;
+      document.getElementById('regSeconds').textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Sticky Nav
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Nav Toggle
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // Scroll-triggered fade-in animations
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
