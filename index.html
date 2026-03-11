@@ -468,6 +468,27 @@
       font-family: var(--font-heading);
       font-size: 1.75rem;
       color: var(--white);
+      overflow: hidden;
+    }
+
+    .organiser-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .organiser-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .organiser-card a h3 {
+      color: var(--teal-dark);
+      transition: color 0.2s;
+    }
+
+    .organiser-card a:hover h3 {
+      color: var(--teal);
     }
 
     .organiser-card h3 {
@@ -652,7 +673,7 @@
           <a href="https://maps.app.goo.gl/ff9va9n3oP5g3SUS8" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">Akademihotellet, Uppsala</a>
         </span>
       </div>
-      <p class="hero-hosted">Hosted by Uppsala University in collaboration with WASP-HS Synthetic Data: Facts, Representations, and Transparency (ref. no. 807), the AI Cluster of Culture and Memory (ref. no. 087) and the Synthetic Pasts Project (Marcus and Amalia Wallenberg Foundation ref. no. XXX)</p>
+      <p class="hero-hosted">Hosted by Uppsala University in collaboration with WASP-HS research group Synthetic Data: Facts, Representations, and Transparency, the WASP-HS Cluster of Culture and Memory and the Synthetic Pasts Project (Marcus and Amalia Wallenberg Foundation)</p>
       <div class="countdown" id="heroCountdown">
         <div class="countdown-item">
           <div class="countdown-number" id="heroDays">--</div>
@@ -824,34 +845,29 @@
       <h2 class="section-title fade-in">Meet the Team</h2>
       <div class="organisers-grid">
         <div class="organiser-card fade-in">
-          <div class="organiser-avatar">A</div>
-          <h3>AAA</h3>
-          <p>Department of History</p>
+          <div class="organiser-avatar"><img src="images/ylva-soderfeldt.jpg" alt="Ylva Söderfeldt"></div>
+          <a href="https://www.uu.se/en/contact-and-organisation/staff?query=N17-1114" target="_blank" rel="noopener"><h3>Ylva Söderfeldt</h3></a>
+          <p>Uppsala University</p>
         </div>
         <div class="organiser-card fade-in">
-          <div class="organiser-avatar">B</div>
-          <h3>BBB</h3>
-          <p>Department of Literature</p>
+          <div class="organiser-avatar">VD</div>
+          <a href="https://www.uu.se/en/contact-and-organisation/staff?query=N23-54" target="_blank" rel="noopener"><h3>Vera Danilova</h3></a>
+          <p>Uppsala University</p>
         </div>
         <div class="organiser-card fade-in">
-          <div class="organiser-avatar">C</div>
-          <h3>CCC</h3>
-          <p>Centre for Digital Humanities</p>
+          <div class="organiser-avatar"><img src="images/matts-lindstrom.jpg" alt="Matts Lindström"></div>
+          <a href="https://www.uu.se/en/contact-and-organisation/staff?query=N18-1687" target="_blank" rel="noopener"><h3>Matts Lindström</h3></a>
+          <p>Uppsala University</p>
         </div>
         <div class="organiser-card fade-in">
-          <div class="organiser-avatar">D</div>
-          <h3>DDD</h3>
-          <p>Department of Information Technology</p>
+          <div class="organiser-avatar"><img src="images/anna-foka.jpg" alt="Anna Foka"></div>
+          <a href="https://www.uu.se/en/contact-and-organisation/staff?query=N18-926" target="_blank" rel="noopener"><h3>Anna Foka</h3></a>
+          <p>Uppsala University</p>
         </div>
         <div class="organiser-card fade-in">
-          <div class="organiser-avatar">E</div>
-          <h3>EEE</h3>
-          <p>Department of Economic History</p>
-        </div>
-        <div class="organiser-card fade-in">
-          <div class="organiser-avatar">F</div>
-          <h3>FFF</h3>
-          <p>Department of History of Science</p>
+          <div class="organiser-avatar"><img src="images/fahim-sikder.jpg" alt="Md Fahim Sikder"></div>
+          <a href="https://liu.se/en/employee/mdfsi57" target="_blank" rel="noopener"><h3>Md Fahim Sikder</h3></a>
+          <p>Linköping University</p>
         </div>
       </div>
     </div>
